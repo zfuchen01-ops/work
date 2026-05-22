@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     -- ===================== 软删除字段 =====================
-    deleted     SMALLINT   NOT NULL DEFAULT 0
+    deleted     INTEGER    NOT NULL DEFAULT 0
 );
 
 -- 用户名唯一索引

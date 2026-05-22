@@ -1,9 +1,12 @@
 package com.example.user.controller;
 
+import com.example.common.Result;
 import com.example.user.domain.User;
+import com.example.user.dto.AuthResponse;
+import com.example.user.dto.LoginRequest;
+import com.example.user.dto.RegisterRequest;
 import com.example.user.service.UserService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,31 +21,36 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public ResponseEntity<User> create(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(user));
+    @PostMapping("/register")
+    public Result<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        return Result.success(userService.register(request));
+    }
+
+    @PostMapping("/login")
+    public Result<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        return Result.success(userService.login(request));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public Result<User> findById(@PathVariable Long id) {
         return userService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .map(Result::success)
+                .orElse(Result.error(404, "用户不存在"));
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        return ResponseEntity.ok(userService.findAll());
+    public Result<List<User>> findAll() {
+        return Result.success(userService.findAll());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
-        return ResponseEntity.ok(userService.update(id, user));
+    public Result<User> update(@PathVariable Long id, @Valid @RequestBody User user) {
+        return Result.success(userService.update(id, user));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public Result<Void> delete(@PathVariable Long id) {
         userService.delete(id);
-        return ResponseEntity.noContent().build();
+        return Result.success();
     }
 }

@@ -1,5 +1,15 @@
+/Users/cowboy/work-1/work-1/src/main/java/com/example/config/JwtUtil.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/common/Result.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/user/service/impl/UserServiceImpl.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/common/exception/GlobalExceptionHandler.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/UserManagementApplication.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/user/dto/LoginRequest.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/common/exception/BusinessException.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/config/SecurityConfig.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/config/JwtAuthenticationFilter.java
 /Users/cowboy/work-1/work-1/src/main/java/com/example/user/controller/UserController.java
 /Users/cowboy/work-1/work-1/src/main/java/com/example/user/domain/User.java
-/Users/cowboy/work-1/work-1/src/main/java/com/example/UserManagementApplication.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/user/dto/RegisterRequest.java
+/Users/cowboy/work-1/work-1/src/main/java/com/example/user/dto/AuthResponse.java
 /Users/cowboy/work-1/work-1/src/main/java/com/example/user/repository/UserRepository.java
 /Users/cowboy/work-1/work-1/src/main/java/com/example/user/service/UserService.java

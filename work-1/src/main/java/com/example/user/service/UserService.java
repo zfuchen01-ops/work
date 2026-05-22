@@ -1,49 +1,24 @@
 package com.example.user.service;
 
 import com.example.user.domain.User;
-import com.example.user.repository.UserRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.user.dto.AuthResponse;
+import com.example.user.dto.LoginRequest;
+import com.example.user.dto.RegisterRequest;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@Transactional
-public class UserService {
+public interface UserService {
 
-    private final UserRepository userRepository;
+    AuthResponse register(RegisterRequest request);
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    AuthResponse login(LoginRequest request);
 
-    public User create(User user) {
-        return userRepository.save(user);
-    }
+    Optional<User> findById(Long id);
 
-    @Transactional(readOnly = true)
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
+    List<User> findAll();
 
-    @Transactional(readOnly = true)
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
+    User update(Long id, User updated);
 
-    public User update(Long id, User updated) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found: " + id));
-        user.setUsername(updated.getUsername());
-        user.setEmail(updated.getEmail());
-        if (updated.getPassword() != null) {
-            user.setPassword(updated.getPassword());
-        }
-        return userRepository.save(user);
-    }
-
-    public void delete(Long id) {
-        userRepository.deleteById(id);
-    }
+    void delete(Long id);
 }

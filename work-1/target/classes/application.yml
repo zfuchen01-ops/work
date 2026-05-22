@@ -20,3 +20,7 @@ spring:
     init:
       mode: always
       schema-locations: classpath:db/schema.sql
+
+jwt:
+  secret: dXNlci1tYW5hZ2VtZW50LXNlY3JldC1rZXktbWluLWxlbmd0aC0zMi1ieXRlcw==
+  expiration: 86400000
